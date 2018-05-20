@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Scority.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Scority.Controllers
 {
@@ -20,6 +17,11 @@ namespace Scority.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Games.ToListAsync());
+        }
+
+        public async Task<IActionResult> Show(int id)
+        {
+            return View(await _context.Games.FindAsync(id));
         }
     }
 }

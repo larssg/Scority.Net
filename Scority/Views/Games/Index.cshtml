@@ -12,8 +12,14 @@
     @foreach (var game in Model)
     {
         <tr>
-            <td>@game.Name</td>
+            <td>
+                <a asp-action="Show" asp-route-id="@game.GameId">
+                    @game.Name
+                </a>
+            </td>
             <td class="text-right">@game.TeamSize</td>
         </tr>
     }
 </table>
+
+@Model.Count() games found.
